@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.framework.middlewares import ExceptionMiddleware
+from app.framework.routers import base_router
+from app.framework.routers import health_router
 from app.framework.settings import get_settings
 
 settings = get_settings()
@@ -23,6 +25,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.add_middleware(ExceptionMiddleware)
+
+# Routers
+app.include_router(router=health_router)
+app.include_router(router=base_router)
 
 
 @app.get("/health")
