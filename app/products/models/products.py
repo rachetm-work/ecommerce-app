@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float
+from datetime import datetime
+
+from sqlalchemy import Column, Integer, DateTime
+from sqlalchemy import String, Float
 
 from app.framework.models import BaseModel
 from app.products.schemas import ProductSchema
@@ -8,6 +11,8 @@ class Product(BaseModel):
     __tablename__ = "products"
 
     id = Column(Integer, primary_key=True, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     name = Column(String, index=True)
     description = Column(String)
     price = Column(Float)
