@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.framework.middlewares import ExceptionMiddleware
 from app.framework.settings import get_settings
 
 settings = get_settings()
@@ -21,6 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(ExceptionMiddleware)
 
 
 @app.get("/health")
