@@ -8,7 +8,7 @@ class BaseCrudService:
         return self.db_session.query(self.model).all()
 
     def create(self, resource):
-        db_item = self.model(**resource.dict())
+        db_item = self.model(**resource.model_dump())
         self.db_session.add(db_item)
         self.db_session.commit()
         self.db_session.refresh(db_item)
