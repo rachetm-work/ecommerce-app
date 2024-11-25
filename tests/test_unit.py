@@ -1,9 +1,9 @@
 import pytest
 
-from app.framework.exceptions import BadRequest
-from app.orders.schemas import OrderItemSchema
-from app.orders.services import OrderService
-from app.products.models import Product
+from src.framework.exceptions import BadRequest
+from src.orders.schemas import OrderItemSchema
+from src.orders.services import OrderService
+from src.products.models import Product
 
 
 class TestProductModel:

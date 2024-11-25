@@ -2,10 +2,10 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.framework.middlewares import ExceptionMiddleware
-from app.framework.routers import base_router
-from app.framework.routers import health_router
-from app.framework.settings import get_settings
+from src.framework.middlewares import ExceptionMiddleware
+from src.framework.routers import base_router
+from src.framework.routers import health_router
+from src.framework.settings import get_settings
 
 settings = get_settings()
 

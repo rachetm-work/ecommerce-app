@@ -2,11 +2,11 @@ from typing import List
 
 from fastapi import APIRouter
 
-from app.framework.exceptions import BadRequest
-from app.framework.services import BaseCrudService
-from app.orders.models import Order, OrderItem
-from app.orders.schemas import OrderItemSchema
-from app.products.models import Product
+from src.framework.exceptions import BadRequest
+from src.framework.services import BaseCrudService
+from src.orders.models import Order, OrderItem
+from src.orders.schemas import OrderItemSchema
+from src.products.models import Product
 
 router = APIRouter()
 

@@ -8,10 +8,10 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.framework.database.database import get_db
-from app.framework.models import BaseModel
-from app.orders.models import Order, OrderItem
-from app.products.models import Product
+from src.framework.database.database import get_db
+from src.framework.models import BaseModel
+from src.orders.models import Order, OrderItem
+from src.products.models import Product
 from main import app
 
 load_dotenv()

@@ -1,4 +1,4 @@
-from app.framework.utils import call_api
+from src.framework.utils import call_api
 
 
 class TestProductAPI:

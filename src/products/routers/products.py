@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.framework.database import database
-from app.framework.responses import ApiSuccessResponse
-from app.framework.serializers import ApiModelSerializer
-from app.products.schemas import ProductCreateSchema
-from app.products.services import ProductService
+from src.framework.database import database
+from src.framework.responses import ApiSuccessResponse
+from src.framework.serializers import ApiModelSerializer
+from src.products.schemas import ProductCreateSchema
+from src.products.services import ProductService
 
 router = APIRouter(prefix="/products", tags=["products"])
 

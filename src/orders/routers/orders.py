@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.framework.database import database
-from app.framework.responses import ApiSuccessResponse
-from app.framework.serializers import ApiModelSerializer
-from app.orders.schemas import OrderSchema, OrderCreateSchema
-from app.orders.services import OrderService
+from src.framework.database import database
+from src.framework.responses import ApiSuccessResponse
+from src.framework.serializers import ApiModelSerializer
+from src.orders.schemas import OrderSchema, OrderCreateSchema
+from src.orders.services import OrderService
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 

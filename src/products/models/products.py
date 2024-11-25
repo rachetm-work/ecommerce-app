@@ -3,8 +3,8 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, DateTime
 from sqlalchemy import String, Float
 
-from app.framework.models import BaseModel
-from app.products.schemas import ProductSchema
+from src.framework.models import BaseModel
+from src.products.schemas import ProductSchema
 
 
 class Product(BaseModel):

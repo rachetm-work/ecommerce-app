@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from app.framework.settings import get_settings
-from app.orders.routers import orders_router
-from app.products.routers import products_router
+from src.framework.settings import get_settings
+from src.orders.routers import orders_router
+from src.products.routers import products_router
 
 settings = get_settings()
 

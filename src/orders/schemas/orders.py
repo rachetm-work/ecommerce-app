@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel, conint, ConfigDict
 
-from app.orders.enums import OrderStatus
+from src.orders.enums import OrderStatus
 
 
 class OrderItemSchema(BaseModel):

@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, URL
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import QueuePool
 
-from app.framework.settings import get_settings
+from src.framework.settings import get_settings
 
 settings = get_settings()
 

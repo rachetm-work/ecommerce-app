@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy import pool
 
-from app.framework.models import BaseModel
-from app.orders.models import Order  # noqa
-from app.products.models import Product  # noqa
+from src.framework.models import BaseModel
+from src.orders.models import Order  # noqa
+from src.products.models import Product  # noqa
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

@@ -3,9 +3,9 @@ import traceback
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from app.framework.exceptions import ServerError
-from app.framework.exceptions import BaseCustomException
-from app.framework.responses import ApiErrorResponse
+from src.framework.exceptions import ServerError
+from src.framework.exceptions import BaseCustomException
+from src.framework.responses import ApiErrorResponse
 
 
 class ExceptionMiddleware(BaseHTTPMiddleware):

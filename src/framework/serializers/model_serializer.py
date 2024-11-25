@@ -1,4 +1,4 @@
-from app.framework.models import BaseModel
+from src.framework.models import BaseModel
 
 
 class ApiModelSerializer:

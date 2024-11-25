@@ -1,7 +1,7 @@
 from typing import List
 
-from app.framework.services import BaseCrudService
-from app.products.models import Product
+from src.framework.services import BaseCrudService
+from src.products.models import Product
 
 
 class ProductService(BaseCrudService):

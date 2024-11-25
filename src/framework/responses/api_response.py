@@ -1,8 +1,8 @@
 from fastapi.encoders import jsonable_encoder
 from starlette.responses import JSONResponse
 
-from app.framework.schemas import SuccessResponse, ErrorResponse
-from app.framework.serializers import ApiModelSerializer
+from src.framework.schemas import SuccessResponse, ErrorResponse
+from src.framework.serializers import ApiModelSerializer
 
 
 class ApiSuccessResponse(JSONResponse):

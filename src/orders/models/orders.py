@@ -4,9 +4,9 @@ from sqlalchemy import Column, Integer, String, Numeric, Enum, DateTime
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.framework.models import BaseModel
-from app.orders.enums import OrderStatus
-from app.orders.schemas import OrderSchema, OrderItemResponseSchema
+from src.framework.models import BaseModel
+from src.orders.enums import OrderStatus
+from src.orders.schemas import OrderSchema, OrderItemResponseSchema
 
 
 class OrderItem(BaseModel):
