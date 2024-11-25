@@ -17,10 +17,10 @@ class ApiSuccessResponse(JSONResponse):
 
 
 class ApiErrorResponse(JSONResponse):
-    def __init__(self, error_message, error_code='', **kwargs):
+    def __init__(self, error_message, error_code=500, **kwargs):
         errors = [{
             'error_message': error_message,
             'error_code': error_code
         }]
         super().__init__(content=jsonable_encoder(ErrorResponse(success=False, errors=errors)),
-                         **kwargs)
+                         status_code=error_code, **kwargs)

@@ -1,19 +1,14 @@
 from typing import List
 
-from fastapi import APIRouter, HTTPException
-from fastapi import status
-from sqlalchemy.exc import IntegrityError
+from fastapi import APIRouter
 
+from app.framework.exceptions import BadRequest
 from app.framework.services import BaseCrudService
 from app.orders.models import Order, OrderItem
 from app.orders.schemas import OrderItemSchema
 from app.products.models import Product
 
 router = APIRouter()
-
-
-class InsufficientStockError(Exception):
-    pass
 
 
 class OrderService(BaseCrudService):
@@ -30,10 +25,7 @@ class OrderService(BaseCrudService):
         missing_ids = set(product_ids) - existing_ids
 
         if missing_ids:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Products with ids {missing_ids} not found"
-            )
+            raise BadRequest(error_message=f"Products with ids {missing_ids} not found")
 
     def check_and_lock_stock(self, order_items: List[OrderItemSchema]) -> List[Product]:
         """Check and lock stock for products with FOR UPDATE"""
@@ -46,15 +38,11 @@ class OrderService(BaseCrudService):
             ).first()
 
             if not product:
-                raise HTTPException(
-                    status_code=status.HTTP_404_NOT_FOUND,
-                    detail=f"Product {item.product_id} not found"
-                )
+                raise BadRequest(error_message=f"Product {item.product_id} not found")
 
             if product.stock < item.quantity:
-                raise InsufficientStockError(
-                    f"Insufficient stock for product {product.id}. "
-                    f"Requested: {item.quantity}, Available: {product.stock}"
+                raise BadRequest(
+                    error_message=f"Insufficient stock for product {product.id}. Requested: {item.quantity}, Available: {product.stock}"
                 )
 
             products.append(product)
@@ -117,21 +105,7 @@ class OrderService(BaseCrudService):
 
             return order
 
-        except InsufficientStockError as e:
-            self.db_session.rollback()
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=str(e)
-            )
-        except IntegrityError as e:
-            self.db_session.rollback()
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Database integrity error"
-            )
         except Exception as e:
+            # Rollback and re-raise the exception
             self.db_session.rollback()
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="An unexpected error occurred"
-            )
+            raise e
