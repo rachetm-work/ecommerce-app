@@ -18,7 +18,7 @@ load_dotenv()
 
 
 def get_db_url():
-    url = '${DB_DRIVER}://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME_FOR_TEST}'
+    url = '${DB_DRIVER}://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME_FOR_TEST}'
 
     return re.sub(r"\${(.+?)}", lambda m: os.getenv(m.group(1)), url)
 
