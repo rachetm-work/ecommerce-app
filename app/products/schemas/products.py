@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class ProductBaseSchema(BaseModel):
@@ -15,5 +15,4 @@ class ProductCreateSchema(ProductBaseSchema):
 class ProductSchema(ProductBaseSchema):
     id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

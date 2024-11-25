@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from pydantic import BaseModel, conint
+from pydantic import BaseModel, conint, ConfigDict
 
 from app.orders.enums import OrderStatus
 
@@ -18,8 +18,7 @@ class OrderCreateSchema(BaseModel):
 class OrderItemResponseSchema(OrderItemSchema):
     unit_price: float
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class OrderSchema(BaseModel):
@@ -29,5 +28,4 @@ class OrderSchema(BaseModel):
     created_at: datetime
     items: List[OrderItemResponseSchema]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
