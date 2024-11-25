@@ -1,4 +1,4 @@
-# e-com-app - Basic Ecommerce App
+# ecommerce-app
 
 ## Zania Assignment
 
